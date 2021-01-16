@@ -9,11 +9,12 @@ import { products } from '../../products';
 })
 export class ProductListComponent implements OnInit {
 
-  products:any = products;
+  products:any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.products = products;
     //window.alert("product-list.component.ts")
   }
 
