@@ -1,14 +1,18 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
-    // 既存の属性の説明をホバーして表示します。
-    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "type": "node",
             "request": "launch",
-            "name": "Open product.component.html",
-            "file": "c:\\ProgramData\\MyPrj\\resrvaiton-app\\src\\app\\product\\product.component.html"
+            "name": "Serverプログラムの起動",
+            "program": "${workspaceFolder}\\server\\index.js"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Run Script: start",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
