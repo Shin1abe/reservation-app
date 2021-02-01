@@ -26,7 +26,10 @@ export class ProductListComponent implements OnInit {
         //console.log('次のデータが出力されました：' + data)
         //debugger
       },
-      (err) => { console.error('次のエラーが出力されました：' + err) },
+      (err) => {
+        console.error('次のエラーが出力されました：' + err)
+        //debugger
+      },
       () => { console.log('完了しました!') }
     )
 
