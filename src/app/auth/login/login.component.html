@@ -17,33 +17,49 @@
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </div>
-                        <form class="register-form">
+                        <form class="login-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
                             <label>Ｅメール</label>
-                            <div class="input-group form-group-no-border"
-                                [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group form-group-no-border">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="nc-icon nc-email-85"></i>
                                     </span>
                                 </div>
-
-                                <input type="text" class="form-control" placeholder="Ｅメール" (focus)="focus=true"
-                                    (blur)="focus=false">
+                                <input ngModel 
+                                    name="email" 
+                                    type="email" 
+                                    pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                    required
+                                    class="form-control" 
+                                    placeholder="Ｅメール" >
                             </div>
-
                             <label>パスワード</label>
-                            <div class="input-group form-group-no-border"
-                                [ngClass]="{'input-group-focus':focus1===true}">
+                            <div class="input-group form-group-no-border">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="nc-icon nc-key-25"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="パスワード" (focus)="focus1=true"
-                                    (blur)="focus1=false">
+                                <input ngModel 
+                                    name="password" 
+                                    type="password"
+                                    required
+                                    class="form-control" 
+                                    placeholder="パスワード" >
                             </div>
-                            <button class="btn btn-danger btn-block btn-round">ログイン</button>
+
+                            <button 
+                                class="btn btn-danger btn-block btn-round" 
+                                [disabled]="!loginForm.valid"
+                                type="submit" >ログイン
+                            </button>
                         </form>
+                        <br />
+                        <div *ngIf="errors && errors.length > 0 "  class="alert alert-danger">
+                            <p *ngFor="let error of errors">
+                                {{ error.detail }}
+                            </p>
+                        </div>
                         <div class="forgot">
                             <a [routerLink]="['/login']" class="btn btn-link btn-danger">パスワードを忘れた場合</a>
                         </div>
