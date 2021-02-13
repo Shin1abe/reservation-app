@@ -53,6 +53,7 @@ router.post('/register', function (req, res) {
     }
     User.findOne({ email }, function (err, foundUser) {
         if (err) {
+            console.log(err.errors)
             return res.status(422).send({ errors: [{ title: 'User Error', detail: 'Something went wrong!' }] })
         }
         if (foundUser) {
